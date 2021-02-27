@@ -16,6 +16,17 @@ import inkex
 # first define some SVG primitives
 greenStyle = svg.green_style
 
+# topLeft Coordinate(x, y)
+# w unittouu response length along curve of curved surface
+# h unittouu response height of straight part of curved surface
+# cutSpacing unittouu 
+# hCutCount number number of vertical segments of cut
+# thickness unittouu thickness of material to curve
+# parent svg.group output svg
+# invertNotches bool whether to have notches on the end
+# centralRib bool whether to have holes for a rib in the center, requires even hCutCount
+#
+# returns notchEdges array of unittouu where each notch ends
 def _makeCurvedSurface(topLeft, w, h, cutSpacing, hCutCount, thickness, parent, invertNotches = False, centralRib = False):
     width = Coordinate(w, 0)
     height = Coordinate(0, h)
@@ -27,7 +38,7 @@ def _makeCurvedSurface(topLeft, w, h, cutSpacing, hCutCount, thickness, parent, 
     ySpacing = Coordinate(0, cutSpacing)
     cut = height / hCutCount - ySpacing
     plateThickness = Coordinate(0, thickness)
-    notchEdges = []
+    notchEdges = [] # this gets returned to use with the surface notches
     topHCuts = []
     bottomHCuts = []
 
@@ -106,6 +117,13 @@ def _makeCurvedSurface(topLeft, w, h, cutSpacing, hCutCount, thickness, parent, 
     notchEdges.append(w)
     return notchEdges
 
+# center
+# ellipse
+# start_theta
+# thickness
+# notches array of unittouu where each notch ends
+# parent svg.group output svg
+# invertNotches bool whether to have center accomodate notches on the end
 def _makeNotchedEllipse(center, ellipse, start_theta, thickness, notches, parent, invertNotches):
     start_theta += pi # rotate 180 degrees to put the lid on the topside
 
