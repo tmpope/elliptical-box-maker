@@ -144,12 +144,12 @@ class EllipticalBox(eff.Effect):
     """
     def __init__(self):
         options = [
-            ['unit', str, 'mm', 'Unit, one of: cm, mm, in, ft, ...'],
-            ['thickness', float, '3.0', 'Material thickness'],
-            ['width', float, '100', 'Box width'],
-            ['height', float, '100', 'Box height'],
-            ['depth', float, '100', 'Box depth'],
-            ['cut_dist', float, '1.5', 'Distance between cuts on the wrap around. Note that this value will change slightly to evenly fill up the available space.'],
+            ['unit', str, 'in', 'Unit, one of: cm, mm, in, ft, ...'],
+            ['thickness', float, '0.125', 'Material thickness'],
+            ['width', float, '3', 'Box width'],
+            ['height', float, '2', 'Box height'],
+            ['depth', float, '1.5', 'Box depth'],
+            ['cut_dist', float, '0.1', 'Distance between cuts on the wrap around. Note that this value will change slightly to evenly fill up the available space.'],
             ['auto_cut_dist', inkex.Boolean, 'false', 'Automatically set the cut distance based on the curvature.'], # in progress
             ['cut_nr', int, '3', 'Number of cuts across the depth of the box.'],
             ['lid_angle', float, '120', 'Angle that forms the lid (in degrees, measured from centerpoint of the ellipse)'],
